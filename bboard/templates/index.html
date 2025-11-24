@@ -1,19 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Board</title>
+    <title>{% block title %}Домашка{% endblock %}</title>
+
 </head>
 <body>
-    <h1>Обьявления</h1>
+
+    <h1>Announcments</h1>
+    <div>
+        <a href="{% url 'home' %}">Home</a>
+        {% for rubric in rubrics %}
+            {# <a href="{{ rubric.pk }}/">{{ rubric.name }}</a> #}
+            <a href="{% url 'by_rubric' rubric.pk %}">{{ rubric.name }}</a>
+        {% endfor %}
+    </div>
 
     {% for bb in bbs %}
-    <div>
-        <h2>{{ bb.title }}</h2>
-        <p>{{ bb.content }}</p>
-        <p>{{ bb.published|date:"d.m.Y H:i:s" }}</p>
-    </div>
+        <div>
+            <h2>{{ bb.title }}</h2>
+            <p>{{ bb.content }}</p>
+            <p>
+                <a href="{% url 'by_rubric' bb.rubric.pk %}/">{{ bb.rubric.name }}</a>
+            </p>
+            <p>{{ bb.published|date:"d.m.Y H:i:s" }}</p>
+        </div>
     {% endfor %}
-
 </body>
 </html>

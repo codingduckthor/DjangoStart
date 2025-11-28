@@ -1,0 +1,29 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}Домашка{% endblock %}</title>
+    <link rel="stylesheet" href="{% static '/style.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Announcments</h1>
+    </header>
+
+    <nav>
+        <a href="{% url 'home' %}">Home</a>
+        <a href="{% url 'add' %}">Add</a>
+        {% for rubric in rubrics %}
+            {# <a href="{{ rubric.pk }}/">{{ rubric.name }}</a> #}
+            <a href="{% url 'by_rubric' rubric.pk %}">{{ rubric.name }}</a>
+        {% endfor %}
+    </nav>
+
+    <section>
+        {% block content %}
+        {% endblock %}
+    </section>
+
+</body>
+</html>

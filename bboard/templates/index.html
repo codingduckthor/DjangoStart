@@ -1,19 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>{% block title %}Домашка{% endblock %}</title>
+{% extends 'layout/base.html' %}
 
-</head>
-<body>
-
-    <h1>Announcments</h1>
-    <div>
-        <a href="{% url 'home' %}">Home</a>
-        {% for rubric in rubrics %}
-            {# <a href="{{ rubric.pk }}/">{{ rubric.name }}</a> #}
-            <a href="{% url 'by_rubric' rubric.pk %}">{{ rubric.name }}</a>
-        {% endfor %}
-    </div>
+{% block content %}
 
     {% for bb in bbs %}
         <div>
@@ -25,5 +12,5 @@
             <p>{{ bb.published|date:"d.m.Y H:i:s" }}</p>
         </div>
     {% endfor %}
-</body>
-</html>
+
+{% endblock %}

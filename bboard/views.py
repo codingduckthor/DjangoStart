@@ -30,3 +30,6 @@ class BbCreateView(CreateView):
         context['rubrics'] = Rubric.objects.all()
 
         return context
+
+def showLogin(request):
+    return render(request, 'login.html')

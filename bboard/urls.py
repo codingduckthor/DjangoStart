@@ -16,11 +16,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from bboard.views import home, by_rubric, BbCreateView
+from bboard.views import home, by_rubric, BbCreateView, showLogin
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('<int:rubric_id>/', by_rubric, name='by_rubric'),
     path('add/', BbCreateView.as_view(), name='add'),
     path('', home, name='home'),
+    path('login/', showLogin, name='login'),
 ]

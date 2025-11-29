@@ -4,7 +4,7 @@
 <html>
 <head>
     <title>{% block title %}Домашка{% endblock %}</title>
-    <link rel="stylesheet" href="{% static '/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
 </head>
 <body>
     <header>
@@ -18,12 +18,15 @@
             {# <a href="{{ rubric.pk }}/">{{ rubric.name }}</a> #}
             <a href="{% url 'by_rubric' rubric.pk %}">{{ rubric.name }}</a>
         {% endfor %}
+        <a href="{% url 'login' %}">Login</a>
     </nav>
 
     <section>
         {% block content %}
         {% endblock %}
     </section>
+
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
 
 </body>
 </html>
